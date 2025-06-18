@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>インフォグラフィック：なぜ日本では“政治を語る”ことが困難なのか？</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ffc168, #f27c93, #8b65ac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-[#003f5c] text-gray-200">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12 md:mb-16">
+            <h1 class="text-3xl md:text-5xl font-black mb-4 leading-tight gradient-text">なぜ日本では“政治を語る”ことが<br class="md:hidden">これほどまでに困難なのか？</h1>
+            <p class="text-lg md:text-xl text-gray-300">若者の沈黙とメディアの忖度が交差する「見えない構造」を読み解く</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <div class="md:col-span-2 bg-[#2f4b7c]/50 rounded-xl shadow-2xl p-6 md:p-8 ring-1 ring-white/10">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 text-[#ffe272]">第1章:「政治って、話しちゃいけないの？」</h2>
+                <p class="text-center max-w-3xl mx-auto text-gray-300">「友達と政治について話したりする事ないの？」軽い気持ちで尋ねたこの問いへの「全くない。変な目で見られるから」という返答。この個人的な体験は、日本社会に深く根ざす大きな問いへと繋がります。民主主義社会であるはずのこの国で、なぜ政治を語ることはタブー視されるのでしょうか。本インフォグラフィックでは、その「見えない構造」をデータと図解で紐解きます。</p>
+            </div>
+
+            <div class="md:col-span-2 bg-[#2f4b7c]/50 rounded-xl shadow-2xl p-6 md:p-8 ring-1 ring-white/10">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#ffe272]">第2章: 語らない若者たち ─「関心はある、でも話せない」の正体</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                         <h3 class="text-xl font-bold mb-4 text-center text-[#ffc168]">若者の政治的会話の頻度</h3>
+                         <p class="text-center text-sm mb-4 text-gray-400">家族や友人とでさえ、政治の話は避けられる傾向が顕著です。</p>
+                        <div class="flex flex-col md:flex-row gap-8 justify-center items-center">
+                            <div class="w-full md:w-1/2">
+                                <div class="chart-container h-64 md:h-72">
+                                    <canvas id="friendsChart"></canvas>
+                                </div>
+                                <p class="text-center mt-2 font-semibold">友人との会話</p>
+                            </div>
+                            <div class="w-full md:w-1/2">
+                                <div class="chart-container h-64 md:h-72">
+                                    <canvas id="familyChart"></canvas>
+                                </div>
+                                <p class="text-center mt-2 font-semibold">家族との会話</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-center text-[#ffc168]">若者の投票率の低迷</h3>
+                        <p class="text-center text-sm mb-4 text-gray-400">若者の声は、選挙で十分に反映されているとは言えません。</p>
+                        <div class="chart-container h-80">
+                            <canvas id="voterTurnoutChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                 <div class="mt-12">
+                    <h3 class="text-xl font-bold mb-6 text-center text-[#ffc168]">心理的要因：沈黙の螺旋</h3>
+                    <div class="relative max-w-2xl mx-auto p-4">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-72 h-72 md:w-96 md:h-96 border-4 border-dashed border-[#8b65ac]/50 rounded-full animate-spin-slow"></div>
+                            <div class="absolute w-56 h-56 md:w-72 md:h-72 border-4 border-dashed border-[#c36aa6]/50 rounded-full animate-spin-slower"></div>
+                        </div>
+                        <div class="relative text-center space-y-4 z-10">
+                            <div class="bg-[#003f5c]/80 backdrop-blur-sm p-3 rounded-lg">
+                                <p class="font-bold text-lg">少数派だと感じると...</p>
+                                <p class="text-2xl font-bold text-[#f27c93]">↓</p>
+                                <p class="text-gray-300">孤立を恐れて<span class="font-bold text-[#f27c93]">沈黙</span>する</p>
+                            </div>
+                             <div class="bg-[#003f5c]/80 backdrop-blur-sm p-3 rounded-lg">
+                                <p class="font-bold text-lg">多数派だと感じると...</p>
+                                <p class="text-2xl font-bold text-[#ff9b78]">↓</p>
+                                <p class="text-gray-300">自信を持って<span class="font-bold text-[#ff9b78]">発言</span>する</p>
+                            </div>
+                             <div class="bg-[#003f5c]/80 backdrop-blur-sm p-3 rounded-lg">
+                                <p class="text-lg">結果...</p>
+                                <p class="text-2xl font-bold">🔄</p>
+                                <p class="font-bold text-xl text-[#ffc168]">沈黙が沈黙を呼ぶ<br>悪循環が生まれる</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                <div class="mt-8 pt-8 border-t border-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-center text-[#ffc168]">✨ 市場トレンド探索</h3>
+                    <textarea id="marketTrendInput" class="w-full p-3 rounded-lg bg-[#003f5c]/70 text-gray-200 border border-[#4b5d8f] focus:outline-none focus:ring-2 focus:ring-[#8b65ac]" rows="4" placeholder="若者の政治参加の最新トレンドについて教えてください。"></textarea>
+                    <button id="getMarketTrendBtn" class="mt-4 w-full bg-gradient-to-r from-[#8b65ac] to-[#c36aa6] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">トレンドを分析</button>
+                    <div id="marketTrendOutput" class="mt-6 p-4 bg-[#4b5d8f]/50 rounded-lg text-gray-200 border border-[#8b65ac]">
+                        <p class="text-center text-gray-400">ここに市場トレンドの分析が表示されます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-[#2f4b7c]/50 rounded-xl shadow-2xl p-6 md:p-8 ring-1 ring-white/10">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#ffe272]">第3章: 語らせない構造 ─「報道の自由」は本当にあるのか？</h2>
+                 <div class="text-center bg-[#4b5d8f]/50 p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-bold mb-2 text-[#f27c93]">世界報道自由度ランキング (2021年)</h3>
+                    <p class="text-7xl font-black gradient-text">67<span class="text-3xl font-bold">位</span></p>
+                    <p class="text-lg text-gray-300">/ 180カ国中</p>
+                    <p class="mt-4 text-xl font-bold bg-red-500/80 text-white py-1 px-3 rounded-full inline-block">G7諸国中最下位</p>
+                 </div>
+                 <h3 class="text-xl font-bold mb-4 text-center text-[#f27c93]">政権によるメディアへの圧力</h3>
+                 <div class="relative border-l-4 border-[#8b65ac] ml-4 pl-8 space-y-10">
+                    <div class="relative">
+                        <div class="absolute -left-[50px] top-1/2 -translate-y-1/2 w-8 h-8 bg-[#8b65ac] rounded-full border-4 border-[#2f4b7c]"></div>
+                        <h4 class="font-bold text-lg text-[#ff9b78]">2014年 放送法解釈変更問題</h4>
+                        <p class="text-gray-300">安倍政権の補佐官が総務省に圧力をかけ、一つの番組でも「政治的に公平」でないと判断できる、と解釈を変更させようとしたことが発覚。</p>
+                    </div>
+                     <div class="relative">
+                        <div class="absolute -left-[50px] top-1/2 -translate-y-1/2 w-8 h-8 bg-[#8b65ac] rounded-full border-4 border-[#2f4b7c]"></div>
+                        <h4 class="font-bold text-lg text-[#ff9b78]">2016年 高市総務相「電波停止」発言</h4>
+                        <p class="text-gray-300">高市早苗総務相（当時）が国会で「放送法違反があれば電波停止もあり得る」と発言。メディアに対するあからさまな牽制として大きな批判を浴びた。</p>
+                    </div>
+                 </div>
+                 <div class="mt-8 pt-8 border-t border-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-center text-[#ffc168]">✨ メディアの自由について専門家に質問</h3>
+                    <textarea id="expertQuestionInput" class="w-full p-3 rounded-lg bg-[#003f5c]/70 text-gray-200 border border-[#4b5d8f] focus:outline-none focus:ring-2 focus:ring-[#8b65ac]" rows="4" placeholder="日本の報道の自由が低いのはなぜですか？"></textarea>
+                    <button id="askExpertBtn" class="mt-4 w-full bg-gradient-to-r from-[#8b65ac] to-[#c36aa6] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">質問する</button>
+                    <div id="expertAnswerOutput" class="mt-6 p-4 bg-[#4b5d8f]/50 rounded-lg text-gray-200 border border-[#8b65ac]">
+                        <p class="text-center text-gray-400">ここに専門家の回答が表示されます。</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="bg-[#2f4b7c]/50 rounded-xl shadow-2xl p-6 md:p-8 ring-1 ring-white/10">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#ffe272]">第4章: 閉ざされたメディア ─ “記者クラブ”と“スポンサー”の重力場</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4 text-center text-[#c36aa6]">記者クラブ制度の閉鎖性</h3>
+                        <div class="space-y-4 text-center">
+                            <div class="p-4 bg-[#4b5d8f]/50 rounded-lg">
+                                <p class="font-bold">政府・官庁</p>
+                            </div>
+                            <p class="text-3xl font-bold text-[#c36aa6]">↓</p>
+                             <div class="p-4 bg-[#8b65ac]/80 rounded-lg ring-2 ring-[#c36aa6]">
+                                <p class="font-bold">記者クラブ (大手メディア限定)</p>
+                                <p class="text-sm text-gray-400">情報提供と引き換えに馴れ合い・忖度が生まれる</p>
+                            </div>
+                            <p class="text-3xl font-bold text-[#c36aa6]">↓</p>
+                            <div class="p-4 bg-[#4b5d8f]/50 rounded-lg">
+                                <p class="font-bold">国民</p>
+                            </div>
+                             <div class="mt-4 p-4 border-2 border-dashed border-red-500 rounded-lg">
+                                <p class="font-bold text-red-400">フリーランス・海外メディアは排除</p>
+                             </div>
+                        </div>
+                    </div>
+                     <div>
+                        <h3 class="text-xl font-bold mb-4 text-center text-[#f27c93]">スポンサー依存による自主検閲</h3>
+                        <div class="space-y-4 text-center">
+                            <div class="p-4 bg-[#4b5d8f]/50 rounded-lg">
+                                <p class="font-bold">スポンサー企業</p>
+                            </div>
+                            <p class="text-3xl font-bold text-[#f27c93]">¥↓</p>
+                             <div class="p-4 bg-[#8b65ac]/80 rounded-lg ring-2 ring-[#f27c93]">
+                                <p class="font-bold">商業メディア</p>
+                                <p class="text-sm text-gray-400">広告収入のため、スポンサーに不都合な報道を自粛</p>
+                            </div>
+                            <p class="text-3xl font-bold text-[#f27c93]">↓</p>
+                            <div class="p-4 bg-[#4b5d8f]/50 rounded-lg">
+                                <p class="font-bold">国民</p>
+                            </div>
+                            <div class="mt-4 p-4 border-2 border-dashed border-yellow-500 rounded-lg">
+                               <p class="font-bold text-yellow-400">企業不祥事や五輪汚職などが報じられにくい</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-600">
+                    <h3 class="text-xl font-bold mb-4 text-center text-[#ffc168]">✨ 競争優位性ジェネレーター</h3>
+                    <textarea id="competitiveEdgeInput" class="w-full p-3 rounded-lg bg-[#003f5c]/70 text-gray-200 border border-[#4b5d8f] focus:outline-none focus:ring-2 focus:ring-[#8b65ac]" rows="4" placeholder="既存メディアが信頼を取り戻すための戦略を考えてください。"></textarea>
+                    <button id="generateCompetitiveEdgeBtn" class="mt-4 w-full bg-gradient-to-r from-[#8b65ac] to-[#c36aa6] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">戦略を生成</button>
+                    <div id="competitiveEdgeOutput" class="mt-6 p-4 bg-[#4b5d8f]/50 rounded-lg text-gray-200 border border-[#8b65ac]">
+                        <p class="text-center text-gray-400">ここに競争戦略のアイデアが表示されます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-[#2f4b7c]/50 rounded-xl shadow-2xl p-6 md:p-8 ring-1 ring-white/10">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#ffe272]">第5章: 公共放送NHK ─ 中立か、権力の“伝書鳩”か</h2>
+                 <div class="max-w-3xl mx-auto">
+                    <div class="text-center p-6 border-2 border-[#ff9b78] rounded-lg bg-[#4b5d8f]/50 mb-8">
+                        <blockquote class="text-xl md:text-2xl font-bold italic">「政府が『右』と言っているものを、我々が『左』と言うわけにはいかない」</blockquote>
+                        <cite class="block text-right mt-4 text-gray-300">─ 籾井勝人 元NHK会長 (2014年就任会見)</cite>
+                    </div>
+                     <h3 class="text-xl font-bold mb-4 text-center text-[#ff9b78]">政権による人事介入の構造</h3>
+                     <div class="flex flex-col items-center space-y-4">
+                        <div class="p-4 bg-[#8b65ac]/80 rounded-lg text-center"><p class="font-bold">国会 (与党が多数)</p></div>
+                         <p class="text-3xl font-bold text-[#ff9b78]">↓ <span class="text-sm font-normal text-gray-400">(同意人事)</span></p>
+                         <div class="p-4 bg-[#8b65ac]/80 rounded-lg text-center"><p class="font-bold">経営委員会</p><p class="text-sm text-gray-400">(政権と思想が近い人物が任命される懸念)</p></div>
+                         <p class="text-3xl font-bold text-[#ff9b78]">↓ <span class="text-sm font-normal text-gray-400">(任命)</span></p>
+                         <div class="p-4 bg-[#c36aa6]/80 rounded-lg text-center"><p class="font-bold">NHK会長</p></div>
+                         <p class="text-3xl font-bold text-[#f27c93]">↓ <span class="text-sm font-normal text-gray-400">(影響)</span></p>
+                         <div class="p-4 bg-[#4b5d8f]/50 rounded-lg text-center w-full"><p class="font-bold">報道内容</p><p class="text-sm text-gray-400">(安保法制や森友・加計問題で政権寄りの報道姿勢が批判された)</p></div>
+                     </div>
+                 </div>
+            </div>
+
+            <div class="md:col-span-2 bg-[#003f5c] rounded-xl shadow-2xl p-6 md:p-8 ring-2 ring-[#ffe272]">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-[#ffe272]">第6章: 沈黙の共犯関係 ─ 相互作用が生む「政治忌避社会」</h2>
+                <p class="text-center max-w-3xl mx-auto mb-8 text-gray-300">若者の「語らない」心理と、メディアの「語らせない」構造は、互いに影響し合い、負のループを形成しています。これが、民主主義の危機の本質である「関心の無力感」を生み出すのです。</p>
+                <div class="relative w-full p-4 flex justify-center items-center">
+                    <div class="absolute w-full max-w-lg aspect-square border-8 border-dashed border-[#8b65ac]/50 rounded-full animate-spin-slow"></div>
+                     <div class="w-full max-w-lg aspect-square grid grid-cols-2 grid-rows-2 gap-4 text-center z-10">
+                        <div class="bg-[#2f4b7c]/80 backdrop-blur-sm p-4 rounded-xl flex flex-col justify-center items-center">
+                            <p class="font-bold text-lg text-[#ffc168]">1. メディアの不全</p>
+                            <p class="text-sm text-gray-300">権力監視の役割を果たさず、忖度や自主規制を行う</p>
+                        </div>
+                        <div class="flex justify-center items-center"><p class="text-5xl font-bold text-[#c36aa6] animate-pulse">→</p></div>
+                        <div class="bg-[#2f4b7c]/80 backdrop-blur-sm p-4 rounded-xl flex flex-col justify-center items-center">
+                            <p class="font-bold text-lg text-[#ffc168]">2. 若者の諦め</p>
+                            <p class="text-sm text-gray-300">「どうせ変わらない」という政治的無力感を学習する</p>
+                        </div>
+                         <div class="flex justify-center items-center"><p class="text-5xl font-bold text-[#c36aa6] animate-pulse">↑</p></div>
+                         <div class="flex justify-center items-center"><p class="text-5xl font-bold text-[#c36aa6] animate-pulse">↓</p></div>
+                        <div class="bg-[#2f4b7c]/80 backdrop-blur-sm p-4 rounded-xl flex flex-col justify-center items-center">
+                            <p class="font-bold text-lg text-[#ffc168]">4. 社会的圧力の不在</p>
+                            <p class="text-sm text-gray-300">世論の盛り上がりを欠き、メディアは変わる必要がなくなる</p>
+                        </div>
+                         <div class="flex justify-center items-center"><p class="text-5xl font-bold text-[#c36aa6] animate-pulse">←</p></div>
+                        <div class="bg-[#2f4b7c]/80 backdrop-blur-sm p-4 rounded-xl flex flex-col justify-center items-center">
+                           <p class="font-bold text-lg text-[#ffc168]">3. 若者の沈黙</p>
+                            <p class="text-sm text-gray-300">同調圧力や炎上リスクを恐れ、政治参加や発言を控える</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 bg-gradient-to-br from-[#f27c93] to-[#ff9b78] rounded-xl shadow-2xl p-6 md:p-8 text-center text-[#003f5c]">
+                 <h2 class="text-2xl md:text-3xl font-black mb-4">第7章: 終章｜声を上げることの意味と、最初の一歩</h2>
+                 <p class="max-w-3xl mx-auto font-semibold mb-6">沈黙の構造を断ち切る鍵は、私たち一人ひとりの小さな行動にあります。沈黙を破ることは勇気であり、他者を信頼する選択です。日常の小さな対話の積み重ねこそが、「政治の話をしてもいい社会」をつくるのです。</p>
+                 <div class="mt-8 pt-8 border-t border-[#003f5c]/30">
+                    <h3 class="text-xl font-bold mb-4 text-[#003f5c]">✨ 沈黙を破る会話アイデアを生成</h3>
+                    <textarea id="conversationIdeaInput" class="w-full p-3 rounded-lg bg-[#f9f5f0] text-[#003f5c] border border-[#ffc168] focus:outline-none focus:ring-2 focus:ring-[#f27c93]" rows="3" placeholder="友人との間で政治の話を切り出すには？"></textarea>
+                    <button id="generateIdeaBtn" class="mt-4 w-full bg-[#003f5c] text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105">アイデアを生成する</button>
+                    <div id="generatedIdeaOutput" class="mt-6 p-4 bg-[#003f5c]/30 rounded-lg text-[#003f5c] border border-[#ffc168]">
+                        <p class="text-center text-gray-700">ここに会話アイデアが表示されます。</p>
+                    </div>
+                </div>
+                 <p class="text-2xl md:text-3xl font-bold italic mt-8">あなたは、何を語り、何を語らずにいますか？</p>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const CHART_COLORS = {
+                primary: '#ff9b78',
+                secondary: '#f27c93',
+                background: 'rgba(75, 93, 143, 0.5)',
+                grid: 'rgba(255, 255, 255, 0.1)',
+                text: '#e5e7eb'
+            };
+
+            const wrapLabel = (label, maxWidth) => {
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = words[0];
+
+                for (let i = 1; i < words.length; i++) {
+                    if (currentLine.length + words[i].length + 1 < maxWidth) {
+                        currentLine += ' ' + words[i];
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = words[i];
+                    }
+                }
+                lines.push(currentLine);
+                return lines;
+            };
+
+            const TOOLTIP_CONFIG = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        },
+                        backgroundColor: '#003f5c',
+                        titleFont: { size: 16, weight: 'bold' },
+                        bodyFont: { size: 14 },
+                        padding: 12,
+                        cornerRadius: 8,
+                        displayColors: false,
+                    },
+                    legend: {
+                        labels: {
+                            color: CHART_COLORS.text,
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            };
+            
+            new Chart(document.getElementById('friendsChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['政治の話をしない', '政治の話をする'],
+                    datasets: [{
+                        label: '友人との会話',
+                        data: [70, 30],
+                        backgroundColor: [CHART_COLORS.background, CHART_COLORS.primary],
+                        borderColor: ['#2f4b7c', '#2f4b7c'],
+                        borderWidth: 2
+                    }]
+                },
+                options: { ...TOOLTIP_CONFIG, responsive: true, maintainAspectRatio: false }
+            });
+
+            new Chart(document.getElementById('familyChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['政治の話をしない', '政治の話をする'],
+                    datasets: [{
+                        label: '家族との会話',
+                        data: [50, 50],
+                        backgroundColor: [CHART_COLORS.background, CHART_COLORS.secondary],
+                        borderColor: ['#2f4b7c', '#2f4b7c'],
+                        borderWidth: 2
+                    }]
+                },
+                options: { ...TOOLTIP_CONFIG, responsive: true, maintainAspectRatio: false }
+            });
+
+            new Chart(document.getElementById('voterTurnoutChart'), {
+                type: 'bar',
+                data: {
+                    labels: ['20代の投票率 (2017年衆院選)', '全世代平均'],
+                    datasets: [{
+                        label: '投票率 (%)',
+                        data: [33, 55],
+                        backgroundColor: [CHART_COLORS.primary, CHART_COLORS.secondary],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    ...TOOLTIP_CONFIG,
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            grid: { color: CHART_COLORS.grid },
+                            ticks: { color: CHART_COLORS.text }
+                        },
+                        y: {
+                            grid: { display: false },
+                            ticks: { color: CHART_COLORS.text }
+                        }
+                    },
+                    plugins: { ...TOOLTIP_CONFIG.plugins, legend: { display: false }}
+                }
+            });
+
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes spin-slow {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                .animate-spin-slow {
+                    animation: spin-slow 20s linear infinite;
+                }
+                 @keyframes spin-slower {
+                    from { transform: rotate(360deg); }
+                    to { transform: rotate(0deg); }
+                }
+                .animate-spin-slower {
+                    animation: spin-slower 30s linear infinite;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // LLM API integration functions
+            const API_KEY = ""; // Canvas will provide this at runtime
+            const API_URL_TEXT_GEN = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+
+            async function callGeminiApi(prompt, outputElement) {
+                outputElement.innerHTML = '<p class="text-center animate-pulse">思考中...</p>'; // Loading indicator
+                outputElement.classList.remove('text-red-500'); // Clear error styling for previous errors
+
+                try {
+                    const chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+
+                    const response = await fetch(API_URL_TEXT_GEN, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(`API Error: ${response.status} - ${errorData.error.message || 'Unknown error'}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        outputElement.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`; // Display response, handle newlines
+                    } else {
+                        throw new Error('LLMからの応答がありませんでした。');
+                    }
+                } catch (error) {
+                    console.error("Gemini API call failed:", error);
+                    outputElement.innerHTML = `<p class="text-center text-red-500">エラーが発生しました: ${error.message}</p>`;
+                    outputElement.classList.add('text-red-500');
+                }
+            }
+
+            // Event listeners for existing buttons
+            const askExpertBtn = document.getElementById('askExpertBtn');
+            const expertQuestionInput = document.getElementById('expertQuestionInput');
+            const expertAnswerOutput = document.getElementById('expertAnswerOutput');
+
+            if (askExpertBtn && expertQuestionInput && expertAnswerOutput) {
+                askExpertBtn.addEventListener('click', () => {
+                    const question = expertQuestionInput.value.trim();
+                    if (question) {
+                        const prompt = `あなたは日本のメディアと政治の関係に詳しい専門家です。以下の質問に簡潔かつ客観的に答えてください。
+                        質問: ${question}`;
+                        callGeminiApi(prompt, expertAnswerOutput);
+                    } else {
+                        expertAnswerOutput.innerHTML = '<p class="text-center text-red-500">質問を入力してください。</p>';
+                        expertAnswerOutput.classList.add('text-red-500');
+                    }
+                });
+            }
+
+            const generateIdeaBtn = document.getElementById('generateIdeaBtn');
+            const conversationIdeaInput = document.getElementById('conversationIdeaInput');
+            const generatedIdeaOutput = document.getElementById('generatedIdeaOutput');
+
+            if (generateIdeaBtn && conversationIdeaInput && generatedIdeaOutput) {
+                generateIdeaBtn.addEventListener('click', () => {
+                    const userSituation = conversationIdeaInput.value.trim();
+                    if (userSituation) {
+                        const prompt = `以下の状況に基づいて、政治について安心して話すための具体的な会話アイデアやアプローチを3つ提案してください。
+                        状況: ${userSituation}
+
+                        提案:
+                        1. 
+                        2. 
+                        3. 
+                        `;
+                        callGeminiApi(prompt, generatedIdeaOutput);
+                    } else {
+                        generatedIdeaOutput.innerHTML = '<p class="text-center text-red-500">状況を入力してください。</p>';
+                        generatedIdeaOutput.classList.add('text-red-500');
+                    }
+                });
+            }
+
+            // Event listeners for new buttons
+            const getMarketTrendBtn = document.getElementById('getMarketTrendBtn');
+            const marketTrendInput = document.getElementById('marketTrendInput');
+            const marketTrendOutput = document.getElementById('marketTrendOutput');
+
+            if (getMarketTrendBtn && marketTrendInput && marketTrendOutput) {
+                getMarketTrendBtn.addEventListener('click', () => {
+                    const trendQuestion = marketTrendInput.value.trim();
+                    if (trendQuestion) {
+                        const prompt = `あなたは市場調査の専門家です。以下の質問について、一般的な市場トレンドやその背景を簡潔に分析し、回答してください。
+                        質問: ${trendQuestion}`;
+                        callGeminiApi(prompt, marketTrendOutput);
+                    } else {
+                        marketTrendOutput.innerHTML = '<p class="text-center text-red-500">質問を入力してください。</p>';
+                        marketTrendOutput.classList.add('text-red-500');
+                    }
+                });
+            }
+
+            const generateCompetitiveEdgeBtn = document.getElementById('generateCompetitiveEdgeBtn');
+            const competitiveEdgeInput = document.getElementById('competitiveEdgeInput');
+            const competitiveEdgeOutput = document.getElementById('competitiveEdgeOutput');
+
+            if (generateCompetitiveEdgeBtn && competitiveEdgeInput && competitiveEdgeOutput) {
+                generateCompetitiveEdgeBtn.addEventListener('click', () => {
+                    const strategyQuestion = competitiveEdgeInput.value.trim();
+                    if (strategyQuestion) {
+                        const prompt = `あなたはビジネス戦略の専門家です。以下の状況について、競争優位性を生み出すための具体的な戦略アイデアやアプローチを3つ提案してください。
+                        状況: ${strategyQuestion}
+
+                        提案:
+                        1. 
+                        2. 
+                        3. 
+                        `;
+                        callGeminiApi(prompt, competitiveEdgeOutput);
+                    } else {
+                        competitiveEdgeOutput.innerHTML = '<p class="text-center text-red-500">状況を入力してください。</p>';
+                        competitiveEdgeOutput.classList.add('text-red-500');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
